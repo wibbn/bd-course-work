@@ -1,0 +1,48 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Order {% endblock %} 
+
+{% block content %}
+
+<div class="section">
+    <div class="container">
+        {% if books|length == 0 %}
+        <div class="row justify-content-center mt-7 mb-7">
+            <h1>Your order is empty</h1>
+        </div>
+        {% else %}
+        <div class="row justify-content-center">
+            <div class="col-10 col-md-8">
+                <h1>Order</h1>
+                <table class="table shadow-soft rounded mt-3">
+                    <tr>
+                        <th class="border-0" scope="col" id="name">Name</th>
+                        <th class="border-0" scope="col" id="cover">Cover</th>
+                        <th class="border-0" scope="col" id="author">Author</th>
+                        <th class="border-0" scope="col" id="ganre">Ganre</th>
+                    </tr>
+                    {% for book in books %}
+                        <tr>
+                            <td headers="name"><b>{{book.name}}</b></th>
+                            <td headers="cover" class="d-flex justify-content-center">
+                                <img src="../../../static/assets/img/blog/blog-article-{{(book.id-1)%5+1}}.jpg" class="rounded" height="100" alt="Designer desk">
+                            </th>
+                            <td headers="author">{{book.author}}</td>
+                            <td headers="ganre">{{book.category}}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-10 col-md-8 d-flex justify-content-center">
+                <form action="/order/submit" metod="post">
+                    <button class="btn btn-primary btn-pill text-secondary mt-3" type="submit">Submit order</button>
+                </form>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+        
+{% endblock content %}

@@ -1,0 +1,70 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Order {% endblock %} 
+
+{% block content %}
+
+<div class="section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-10 col-md-8">
+                <h1>Admin pannel</h1>
+            </div>
+            <div class="col-10 col-md-8 mt-5">
+                <h3>Open orders</h3>
+                <table class="table shadow-soft rounded mt-3">
+                    <tr>
+                        <th class="border-0" scope="col" id="number">Number</th>
+                        <th class="border-0" scope="col" id="client">Client</th>
+                        <th class="border-0" scope="col" id="books">Books</th>
+                        <th class="border-0" scope="col" id="time">Creation time</th>
+                        <th class="border-0" scope="col" id="close">Edit</th>
+                    </tr>
+                    {% for order in open_orders %}
+                        <tr>
+                            <td headers="number"><p>{{order.order.number}}</p></th>
+                            <td headers="client">
+                                <b>{{order.client.first_name}} {{order.client.last_name}}</b>
+                            </th>
+                            <td headers="books">
+                                <ul>
+                                {% for book in order.books %}
+                                    <li>{{book.name}}</li>
+                                {% endfor %}
+                                </ul>
+                            </td>
+                            <td headers="time">{{order.order.open_time.strftime("%m.%d.%Y, %H:%M:%S")}}</td>
+                            <td headers="close">
+                                <form action="/admin/order/close" method="post">
+                                    <input type="hidden" name="order_id" value="{{order.order.id}}" />
+                                    <button class="text-danger font-weight-bold btn btn-sm" type="submit">Close</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="col-8 col-md-6 mt-5">
+                <h3>Closed orders</h3>
+                <table class="table shadow-soft rounded mt-3">
+                    <tr>
+                        <th class="border-0" scope="col" id="number">Number</th>
+                        <th class="border-0" scope="col" id="client">Client</th>
+                        <th class="border-0" scope="col" id="time">Creation time</th>
+                    </tr>
+                    {% for order in close_orders %}
+                        <tr>
+                            <td headers="number"><p>{{order.order.number}}</p></th>
+                            <td headers="client">
+                                <b>{{order.client.first_name}} {{order.client.last_name}}</b>
+                            </th>
+                            <td headers="time">{{order.order.open_time.strftime("%m.%d.%Y, %H:%M:%S")}}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+        
+{% endblock content %}

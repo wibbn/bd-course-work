@@ -1,0 +1,49 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Libraries {% endblock %} 
+
+{% block content %}
+
+<div class="section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-10 col-md-8">
+                <h1>Libraries</h1>
+            </div>
+        </div>
+        {% for lib in data %}
+            <div class="row justify-content-center">
+                <div class="col-10 col-md-8">
+                    <div class="card bg-primary shadow-soft border-light mt-5">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col-md-4">
+                                <img src="../static/assets/img/blog/blog-article-{{(lib.id+2)%5+1}}.jpg" class="card-img rounded-left" alt="Artist desk">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <a href="books/atlib/{{lib.id}}"><h3 class="h5 card-title">Library "{{lib.name}}"</h3></a>
+                                    <p class="card-text mb-4">Library with a huge collection of books of all types and ganers</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="card-text small"><span class="fas fa-map-marker-alt mr-2"></span>{{lib.city}}, {{lib.street}} {{lib.building}}</span>
+                                        <span class="small"><span class="far fa-star mr-2"></span>4.7</span>
+                                    </div>
+                                </div>
+                                <div class="card-footer pt-3">
+                                    <div class="d-flex flex-wrap flex-lg-nowrap align-items-center justify-content-end">
+                                        <div class="post-meta">
+                                            <a class="btn btn-primary" href="books/atlib/{{lib.id}}">
+                                                <span class="fas fa-book mr-2"></span>Go to books
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+        
+{% endblock content %}

@@ -1,0 +1,50 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Books {% endblock %} 
+
+{% block content %}
+
+<div class="section">
+    <div class="container">
+        <div class="row justify-content-start">
+            <div class="col-12 col-md-6">
+                <h2>Books at "{{lib.name}}" library</h2>
+            </div>
+        </div>
+        <div class="row">
+            {% for book in data %}
+                <div class="col-12 col-md-6 col-lg-4  mt-4">
+                    <div class="card bg-primary border-light shadow-soft">
+                        <div class="card-header p-3">
+                            <img src="../../../static/assets/img/blog/blog-article-{{(book.id-1)%5+1}}.jpg" class="card-img-top rounded" height="200" alt="Designer desk">
+                        </div>
+                        <div class="card-body pt-2">
+                            <form action="/order/add_item" method="post">
+                                <div class="media d-flex align-items-center justify-content-between">
+                                    <div class="post-group">
+                                        <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="23k followers">
+                                            <img class="avatar-sm mr-2 img-fluid rounded-circle" src="../../../static/assets/img/team/profile-picture-{{(book.id)%6+1}}.jpg" alt="Jo portrait"> By {{book.author}}
+                                        </a>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <span class="h6 icon-tertiary small"><span class="fas fa-medal mr-2"></span>{{book.category}}</span>
+                                    </div>
+                                </div> 
+                                <h3 class="h5 card-title mt-4">{{book.name}}</h3>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <input type="hidden" name="next_path" value="{{request.path}}" />
+                                <input type="hidden" name="lib_id" value="{{lib.id}}" />
+                                <input type="hidden" name="book_id" value="{{book.id}}" />
+                                <div class="d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-primary btn-sm">Add to order</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+        
+{% endblock content %}
