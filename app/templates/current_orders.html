@@ -1,6 +1,6 @@
 {% extends "layouts/base.html" %}
 
-{% block title %} Order {% endblock %} 
+{% block title %} Заказ {% endblock %} 
 
 {% block content %}
 
@@ -8,19 +8,19 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-10 col-md-8 mb-5">
-                <h1>Current orders</h1>
+                <h1>Текущий заказ</h1>
             </div>
         </div>
         {% for order in orders %}
         <div class="row justify-content-center mb-3">
             <div class="col-10 col-md-8">
-                <h3>Order #{{order.number}}</h3>
+                <h3>Заказ №{{order.number}}</h3>
                 <table class="table shadow-soft rounded mt-3">
                     <tr>
-                        <th class="border-0" scope="col" id="name">Name</th>
-                        <th class="border-0" scope="col" id="cover">Cover</th>
-                        <th class="border-0" scope="col" id="author">Author</th>
-                        <th class="border-0" scope="col" id="ganre">Ganre</th>
+                        <th class="border-0" scope="col" id="name">Название</th>
+                        <th class="border-0" scope="col" id="cover">Обложка</th>
+                        <th class="border-0" scope="col" id="author">Автор</th>
+                        <th class="border-0" scope="col" id="ganre">Жанр</th>
                     </tr>
                     {% for book in order['books'] %}
                         <tr>

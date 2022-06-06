@@ -1,6 +1,6 @@
 {% extends "layouts/base.html" %}
 
-{% block title %} Order {% endblock %} 
+{% block title %} Заказы {% endblock %} 
 
 {% block content %}
 
@@ -8,17 +8,17 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-10 col-md-8">
-                <h1>Admin pannel</h1>
+                <h1>Панель администратора</h1>
             </div>
             <div class="col-10 col-md-8 mt-5">
-                <h3>Open orders</h3>
+                <h3>Открытые заказы</h3>
                 <table class="table shadow-soft rounded mt-3">
                     <tr>
-                        <th class="border-0" scope="col" id="number">Number</th>
-                        <th class="border-0" scope="col" id="client">Client</th>
-                        <th class="border-0" scope="col" id="books">Books</th>
-                        <th class="border-0" scope="col" id="time">Creation time</th>
-                        <th class="border-0" scope="col" id="close">Edit</th>
+                        <th class="border-0" scope="col" id="number">№</th>
+                        <th class="border-0" scope="col" id="client">Клиент</th>
+                        <th class="border-0" scope="col" id="books">Книги</th>
+                        <th class="border-0" scope="col" id="time">Время создания</th>
+                        <th class="border-0" scope="col" id="close">Изменить</th>
                     </tr>
                     {% for order in open_orders %}
                         <tr>
@@ -45,12 +45,12 @@
                 </table>
             </div>
             <div class="col-8 col-md-6 mt-5">
-                <h3>Closed orders</h3>
+                <h3>Завершенные заказы</h3>
                 <table class="table shadow-soft rounded mt-3">
                     <tr>
-                        <th class="border-0" scope="col" id="number">Number</th>
-                        <th class="border-0" scope="col" id="client">Client</th>
-                        <th class="border-0" scope="col" id="time">Creation time</th>
+                        <th class="border-0" scope="col" id="number">№</th>
+                        <th class="border-0" scope="col" id="client">Клиент</th>
+                        <th class="border-0" scope="col" id="time">Время  создания</th>
                     </tr>
                     {% for order in close_orders %}
                         <tr>

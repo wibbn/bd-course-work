@@ -10,22 +10,13 @@ load_dotenv()
 print(__name__)
 app = Flask(__name__)
 
-
 app.config.from_object(os.environ['APP_SETTINGS'])
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
-migrate = Migrate()
-
-migrate.init_app(app, db)
 
 lm = LoginManager()
 lm.init_app(app)
 
 from app.models import *
 from app.routes import *
-
-db.create_all()
-
-if __name__ == '__main__':
-    app.run()

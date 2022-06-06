@@ -8,3 +8,4 @@ def get_orders():
     orders_j = [order.serialize() for order in orders]
 
     session['orders'] = orders_j
+

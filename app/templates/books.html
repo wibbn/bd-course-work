@@ -1,6 +1,6 @@
 {% extends "layouts/base.html" %}
 
-{% block title %} Books {% endblock %} 
+{% block title %} Книги {% endblock %} 
 
 {% block content %}
 
@@ -8,7 +8,7 @@
     <div class="container">
         <div class="row justify-content-start">
             <div class="col-12 col-md-6">
-                <h2>Books at "{{lib.name}}" library</h2>
+                <h2>Книги в "{{lib.name}}"</h2>
             </div>
         </div>
         <div class="row">
@@ -23,7 +23,7 @@
                                 <div class="media d-flex align-items-center justify-content-between">
                                     <div class="post-group">
                                         <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="23k followers">
-                                            <img class="avatar-sm mr-2 img-fluid rounded-circle" src="../../../static/assets/img/team/profile-picture-{{(book.id)%6+1}}.jpg" alt="Jo portrait"> By {{book.author}}
+                                            <img class="avatar-sm mr-2 img-fluid rounded-circle" src="../../../static/assets/img/team/profile-picture-{{(book.id)%6+1}}.jpg" alt="Jo portrait">, {{book.author}}
                                         </a>
                                     </div>
                                     <div class="d-flex align-items-center">
@@ -31,12 +31,12 @@
                                     </div>
                                 </div> 
                                 <h3 class="h5 card-title mt-4">{{book.name}}</h3>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <p class="card-text">Бестселлер New York Times. Пронзительная драмма.</p>
                                 <input type="hidden" name="next_path" value="{{request.path}}" />
                                 <input type="hidden" name="lib_id" value="{{lib.id}}" />
                                 <input type="hidden" name="book_id" value="{{book.id}}" />
                                 <div class="d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-primary btn-sm">Add to order</button>
+                                    <button type="submit" class="btn btn-primary btn-sm">Добавить в заказ</button>
                                 </div>
                             </form>
                         </div>
